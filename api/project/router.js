@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
         const data = await Projects.get(req.body);
         res.json(data);
     } catch (error) {
-        res.json(error.message);
+        res.status(500).json({ error: error.message })
+
     }
 })
 
@@ -17,7 +18,8 @@ router.post('/', async (req, res) => {
         const data = await Projects.insert(req.body);
         res.json(data);
     } catch (error) {
-        res.json(error.message);
+        res.status(500).json({ error: error.message })
+
     }
 });
 
