@@ -4,7 +4,7 @@ const server = require('./api/server')
 const db = require('./data/dbConfig')
 
 const projectA = { name: 'Web API', description: 'Build APIs' }
-const projectB = { name: 'Databases', description: 'Learn SQL', completed: true }
+const projectB = { name: 'Databases', description: 'Learn SQL', completed: 1 }
 const projectC = { name: 'Authentication' }
 
 const resourceA = { name: 'keyboard' }
@@ -43,7 +43,7 @@ describe('server.js', () => {
       }, 500)
       it('each project contains name, description and completed (as a boolean)', async () => {
         const res = await request(server).get('/api/projects')
-        expect(res.body[0]).toMatchObject({ ...projectA, completed: false })
+        expect(res.body[0]).toMatchObject({ ...projectA, completed: 0 })
         expect(res.body[1]).toMatchObject(projectB)
       }, 500)
     })

@@ -1,9 +1,15 @@
 const db = require('../../data/dbConfig');
 
 module.exports = {
-    get
+    get,
+    insert
 }
 
 function get() {
     return db('projects');
+}
+
+function insert(post) {
+    return db('projects')
+    .insert(post)
 }
